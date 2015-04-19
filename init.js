@@ -1,7 +1,5 @@
 'use strict';
 
-var gGame = gGame || null;
-
 var startGame = function(player){
 
     if(!gGame){
@@ -27,7 +25,7 @@ var restartGame = function(arr){
         return false;
     }
 
-    localStorage.setItem('newGame', true);
+    gGame.newGame = false;
 
     gGame.setTotal(20);
 
@@ -45,8 +43,6 @@ var restartGame = function(arr){
     var elemsLength     = elems.length;
     var restart         = document.querySelector('.js-restart');
     var display         = RESOLVER.DISPLAY_MODULE;
-
-    localStorage.removeItem('newGame');
 
     document.addEventListener('click', function(e){
 

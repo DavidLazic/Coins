@@ -1,11 +1,14 @@
 'use strict';
 
+var gGame = gGame || null;
+
 var RESOLVER = RESOLVER || {};
 
 var Game = function(cfg){
     this.total          = cfg.total;
     this.currentPlayer  = cfg.currentPlayer;
     this.isThinking     = false;
+    this.newGame        = true;
     this.display        = RESOLVER.DISPLAY_MODULE;
 
     this.userTurn = function(e){
@@ -63,6 +66,7 @@ var Game = function(cfg){
         setTimeout(function(){
 
             if(me.currentPlayer === 'user') return false;
+
             me.display.playerPickMessage(me.currentPlayer, me.total, value);
             me.setTotal(newValue);
             me.setCurrentPlayer('user');
@@ -101,24 +105,23 @@ var Game = function(cfg){
 
     this.startRound = function(){
         var me      = this;
-        var newGame = localStorage.getItem('newGame');
+        var newGame = this.newGame;
 
         var turn = {
             'user'  : this.userTurn,
             'pc'    : this.pcTurn
         };
 
-        if(!newGame){
+        if(newGame){
 
             document.addEventListener('click', function(e){
 
                 if(me.isCurrentPlayer) turn[me.currentPlayer].apply(me, [e]);
 
             });
-            console.log('not new game');
+
             (turn[this.currentPlayer]) ? turn[this.currentPlayer].apply(this, null) : false;
         }
-
     };
 };
 

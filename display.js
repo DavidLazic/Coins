@@ -43,7 +43,6 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
         },
 
         playerPickMessage: function(player, total, value){
-            console.log(player);
             var selector    = '#js-player-pick';
             var parent      = document.querySelector('.js-log');
             var child       = converter.getLogElement(selector)(player, total, value);
