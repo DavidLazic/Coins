@@ -4,6 +4,13 @@ RESOLVER.AI_MODULE = (function(){
 
     return {
 
+        /**
+         * AI method.
+         * Plays with predetermined choices when total gets to specific value.
+         *
+         * @param {Integer} | total - current total amount of coins.
+         * @return {Integer}
+         */
         playSmart: function(total){
             var o = {
                 '10': 1,

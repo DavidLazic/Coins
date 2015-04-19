@@ -1,5 +1,11 @@
 'use strict';
 
+/**
+ * Method for creating new Game instance.
+ *
+ * @param {String} | player - currently chosen player.
+ * @return {Object}
+ */
 var startGame = function(player){
 
     if(!gGame){
@@ -14,6 +20,12 @@ var startGame = function(player){
     gGame.startRound.apply(gGame, null);
 };
 
+/**
+ * Method for game restart.
+ *
+ * @param {Array} | arr - array of DOM container objects.
+ * @return void
+ */
 var restartGame = function(arr){
     var log         = document.querySelector('.js-log');
     var question    = document.querySelector('.js-question');
