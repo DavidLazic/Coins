@@ -10,6 +10,7 @@ var Game = function(cfg){
     this.isThinking     = false;
     this.newGame        = true;
     this.display        = RESOLVER.DISPLAY_MODULE;
+    this.AI             = RESOLVER.AI_MODULE;
 
     this.userTurn = function(e){
         var me                  = this;
@@ -50,7 +51,7 @@ var Game = function(cfg){
         var me                  = this;
         var gameOver            = this.gameOver();
         var total               = this.getTotal();
-        var value               = Math.floor((Math.random() * 3) + 1);
+        var value               = this.AI.playSmart(total);
         var newValue            = total - value;
         var playerContainers    = this.getPlayerContainers();
 
