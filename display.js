@@ -36,7 +36,14 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
             };
         },
 
+        isThinking: function(pc){
+            var item = document.querySelector('.js-restart');
+
+            (pc.isThinking) ? item.innerHTML = 'Wait' : item.innerHTML = 'Restart';
+        },
+
         playerPickMessage: function(player, total, value){
+            console.log(player);
             var selector    = '#js-player-pick';
             var parent      = document.querySelector('.js-log');
             var child       = converter.getLogElement(selector)(player, total, value);
@@ -68,12 +75,6 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
             var elem = document.querySelector('.js-question');
 
             elem.innerHTML = [winner.capitalizeFirstLetter(), ' is the winner!'].join('');
-        },
-
-        showRestart: function(){
-            var elem = document.querySelector('.js-restart');
-
-            elem.classList.add('btn-active');
         }
     };
 

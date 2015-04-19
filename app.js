@@ -5,6 +5,7 @@ var RESOLVER = RESOLVER || {};
 var Game = function(cfg){
     this.total          = cfg.total;
     this.currentPlayer  = cfg.currentPlayer;
+    this.isThinking     = false;
     this.display        = RESOLVER.DISPLAY_MODULE;
 
     this.userTurn = function(e){
@@ -57,12 +58,17 @@ var Game = function(cfg){
 
         if(gameOver) return false;
 
+        this.isThinking = true;
+
         setTimeout(function(){
 
+            if(me.currentPlayer === 'user') return false;
             me.display.playerPickMessage(me.currentPlayer, me.total, value);
             me.setTotal(newValue);
             me.setCurrentPlayer('user');
             me.userTurn();
+            me.isThinking = false;
+            me.display.isThinking({isThinking: false});
 
         }, 1500);
     };
@@ -71,7 +77,7 @@ var Game = function(cfg){
         var total   = this.getTotal();
         var winner  = this.getCurrentPlayer();
 
-        return (total <= 0) ? (this.display.showWinnerMessage(winner), this.display.showRestart(), true) : false;
+        return (total <= 0) ? (this.display.showWinnerMessage(winner), true) : false;
     };
 
     this.isCurrentPlayer = function(){
@@ -94,18 +100,24 @@ var Game = function(cfg){
     };
 
     this.startRound = function(){
-        var me = this;
+        var me      = this;
+        var newGame = localStorage.getItem('newGame');
 
         var turn = {
             'user'  : this.userTurn,
             'pc'    : this.pcTurn
         };
 
-        document.addEventListener('click', function(e){
-            if(me.isCurrentPlayer) turn[me.currentPlayer].apply(me, [e]);
-        });
+        if(!newGame){
 
-        (turn[this.currentPlayer]) ? turn[this.currentPlayer].apply(this, null) : false;
+            document.addEventListener('click', function(e){
+
+                if(me.isCurrentPlayer) turn[me.currentPlayer].apply(me, [e]);
+
+            });
+            console.log('not new game');
+            (turn[this.currentPlayer]) ? turn[this.currentPlayer].apply(this, null) : false;
+        }
 
     };
 };
