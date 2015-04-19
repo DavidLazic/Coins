@@ -2,19 +2,39 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 <body>
 
     <style>
 
     .wrapper,
-    .turn{
+    .turn,
+    .btn-restart{
         display: none;
     }
+
+    .btn{
+        margin: 0 5px;
+        padding: 5px 30px;
+    }
+
+    .btn-restart{
+        margin-left: 30px;
+    }
+
     .wrapper.active,
     .turn.active{
         display: block;
+    }
+
+    .js-question,
+    .btn-restart.btn-active{
+        display: inline-block;
+    }
+
+    .turn{
+        margin-bottom: 40px;
     }
 
     </style>
@@ -23,24 +43,26 @@
 
         <div class="col-md-12 wrapper -wrapper-init js-init-wrapper active">
             <h3>Who will play first?</h3>
-            <button class="js-turn-set" data-player="user">Me</button>
-            <button class="js-turn-set" data-player="pc">PC</button>
+            <button class="btn btn-primary js-turn-set" data-player="user">Me</button>
+            <button class="btn btn-primary js-turn-set" data-player="pc">PC</button>
         </div>
 
         <div class="col-md-12 wrapper -wrapper-round js-round-wrapper">
             <h1 class="js-total"></h1>
-            <div class="js-question">How many coins will you take?</div>
+            <h4 class="js-question">How many coins will you take?</h4>
+            <button class="btn btn-warning btn-restart js-restart">Restart</button>
             <div class="col-md-6 content-wrapper">
 
-                <div class=" turn js-turn-user">
-                    <button class="btn js-pick" data-value="1">1</button>
-                    <button class="btn js-pick" data-value="2">2</button>
-                    <button class="btn js-pick" data-value="3">3</button>
+                <div class="col-md-12 turn js-turn-user">
+                    <button class="btn btn-primary js-pick" data-value="1">1</button>
+                    <button class="btn btn-primary js-pick" data-value="2">2</button>
+                    <button class="btn btn-primary js-pick" data-value="3">3</button>
                 </div>
 
-                <div class="turn js-turn-pc">
-                    Thinking ...
+                <div class="col-md-12 turn js-turn-pc">
+                    <span>Thinking ...</span>
                 </div>
+
             </div>
 
             <div class="col-md-6 log js-log"></div>
@@ -51,6 +73,7 @@
     <script type="text/javascript" src="converter.js"></script>
     <script type="text/javascript" src="display.js"></script>
     <script type="text/javascript" src="init.js"></script>
+
     <script id="js-player-pick" type="text/template">
         <span class="js-player-pick">::value::</span>
     </script>

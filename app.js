@@ -33,7 +33,7 @@ var Game = function(cfg){
                     var total       = me.getTotal();
                     var newValue    = total - value;
 
-                    me.display.playerPickMessage(me.currentPlayer, value);
+                    me.display.playerPickMessage(me.currentPlayer, me.total, value);
                     me.setTotal(newValue);
                     me.setCurrentPlayer('pc');
                     me.pcTurn();
@@ -59,7 +59,7 @@ var Game = function(cfg){
 
         setTimeout(function(){
 
-            me.display.playerPickMessage(me.currentPlayer, value);
+            me.display.playerPickMessage(me.currentPlayer, me.total, value);
             me.setTotal(newValue);
             me.setCurrentPlayer('user');
             me.userTurn();
@@ -71,7 +71,7 @@ var Game = function(cfg){
         var total   = this.getTotal();
         var winner  = this.getCurrentPlayer();
 
-        return (total <= 0) ? (this.display.showWinnerMessage(winner), true) : false;
+        return (total <= 0) ? (this.display.showWinnerMessage(winner), this.display.showRestart(), true) : false;
     };
 
     this.isCurrentPlayer = function(){

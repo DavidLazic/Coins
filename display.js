@@ -36,10 +36,10 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
             };
         },
 
-        playerPickMessage: function(player, value){
+        playerPickMessage: function(player, total, value){
             var selector    = '#js-player-pick';
             var parent      = document.querySelector('.js-log');
-            var child       = converter.getLogElement(selector)(player, value);
+            var child       = converter.getLogElement(selector)(player, total, value);
 
             parent.appendChild(child);
         },
@@ -68,6 +68,12 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
             var elem = document.querySelector('.js-question');
 
             elem.innerHTML = [winner.capitalizeFirstLetter(), ' is the winner!'].join('');
+        },
+
+        showRestart: function(){
+            var elem = document.querySelector('.js-restart');
+
+            elem.classList.add('btn-active');
         }
     };
 
