@@ -25,7 +25,7 @@ var startGame = function(player){
 
                 var player = elems[i].getAttribute('data-player');
 
-                display.resolveActiveClass([initWrapper, roundWrapper]);
+                display.resolveMultiClass([initWrapper, roundWrapper]);
                 startGame(player);
 
             } else{

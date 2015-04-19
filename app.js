@@ -33,6 +33,7 @@ var Game = function(cfg){
                     var total       = me.getTotal();
                     var newValue    = total - value;
 
+                    me.display.playerPickMessage(me.currentPlayer, value);
                     me.setTotal(newValue);
                     me.setCurrentPlayer('pc');
                     me.pcTurn();
@@ -56,9 +57,14 @@ var Game = function(cfg){
 
         if(gameOver) return false;
 
-        me.setTotal(newValue);
-        me.setCurrentPlayer('user');
-        me.userTurn();
+        setTimeout(function(){
+
+            me.display.playerPickMessage(me.currentPlayer, value);
+            me.setTotal(newValue);
+            me.setCurrentPlayer('user');
+            me.userTurn();
+
+        }, 1500);
     };
 
     this.gameOver = function(){

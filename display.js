@@ -1,10 +1,10 @@
 'use strict';
 
-RESOLVER.DISPLAY_MODULE = (function(){
+RESOLVER.DISPLAY_MODULE = (function(converter){
 
     return {
 
-        resolveActiveClass: function(arr){
+        resolveMultiClass: function(arr){
 
             for(var item in arr){
 
@@ -36,6 +36,14 @@ RESOLVER.DISPLAY_MODULE = (function(){
             };
         },
 
+        playerPickMessage: function(player, value){
+            var selector    = '#js-player-pick';
+            var parent      = document.querySelector('.js-log');
+            var child       = converter.getLogElement(selector)(player, value);
+
+            parent.appendChild(child);
+        },
+
         updateTotalMessage: function(total){
             var elem    = document.querySelector('.js-total');
             var total   = total;
@@ -63,4 +71,4 @@ RESOLVER.DISPLAY_MODULE = (function(){
         }
     };
 
-})();
+})(RESOLVER.CONVERTER_MODULE);
