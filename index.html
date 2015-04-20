@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Game of coins | David Lazic</title>
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 <body>
@@ -27,7 +27,6 @@
         display: block;
     }
 
-    .js-question,
     .btn-restart{
         display: inline-block;
     }
@@ -36,20 +35,47 @@
         margin-bottom: 40px;
     }
 
+    .text-center{
+        text-align: center;
+    }
+
+    .margin-top{
+        margin-top: 40px;
+    }
+
+    .margin-bottom{
+        margin-bottom: 20px;
+    }
+
+    .no-margin{
+        margin: 0;
+        margin-top: 30px;
+    }
+
+    .description{
+        padding-left: 20px;
+    }
+
     </style>
 
+    <h4 class="no-margin description">Game of coins.</h4>
+    <div class="margin-bottom description">"Vanilla" JS.</div>
+    <div class="description"><b><a href="https://github.com/DavidLazic/Coins" target="_blank">Source code</a></b></div>
+    <h4 class="text-center">Make your opponent pick the last coin.</h4>
     <div class="container">
 
-        <div class="col-md-12 wrapper -wrapper-init js-init-wrapper active">
+        <div class="col-md-12 wrapper text-center -wrapper-init js-init-wrapper active">
             <h3>Who will play first?</h3>
             <button class="btn btn-primary js-turn-set" data-player="user">Me</button>
             <button class="btn btn-primary js-turn-set" data-player="pc">PC</button>
         </div>
 
-        <div class="col-md-12 wrapper -wrapper-round js-round-wrapper">
+        <div class="col-md-12 wrapper text-center -wrapper-round js-round-wrapper">
             <h1 class="js-total"></h1>
             <h4 class="js-question">How many coins will you take?</h4>
-            <button class="btn btn-warning btn-restart js-restart">Restart</button>
+            <div class="col-md-12">
+                <button class="btn btn-warning btn-restart js-restart">Restart</button>
+            </div>
             <div class="col-md-6 content-wrapper">
 
                 <div class="col-md-12 turn js-turn-user">
