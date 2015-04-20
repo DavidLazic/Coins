@@ -5,6 +5,16 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
     return {
 
         /**
+         * Active class resolver method for single object.
+         *
+         * @param {Object} | elem - single DOM object.
+         */
+        resolveSingleClass: function(elem){
+
+            (elem.classList.contains('active')) ? elem.classList.remove('active') : elem.classList.add('active');
+        },
+
+        /**
          * Active class resolver method for multiple objects.
          *
          * @param {Array} | arr - DOM objects' array.
