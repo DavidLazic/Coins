@@ -52,6 +52,7 @@ var restartGame = function(arr){
     var elems           = document.querySelectorAll('.js-turn-set');
     var initWrapper     = document.querySelector('.js-init-wrapper');
     var roundWrapper    = document.querySelector('.js-round-wrapper');
+    var link            = document.querySelector('.js-link');
     var elemsLength     = elems.length;
     var restart         = document.querySelector('.js-restart');
     var display         = RESOLVER.DISPLAY_MODULE;
@@ -59,6 +60,8 @@ var restartGame = function(arr){
     document.addEventListener('click', function(e){
 
         if(e.target === restart) restartGame([initWrapper, roundWrapper]);
+
+        if(e.target === link) window.location.href = link.getAttribute('href');
 
         for(var i = 0; i < elemsLength; i++){
 
