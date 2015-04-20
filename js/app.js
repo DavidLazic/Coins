@@ -124,7 +124,7 @@ var Game = function(cfg){
         for(var i = 0; i < players.length; i++){
             // Create dynamic DOM selector for each item.
             var selector = ['.js-turn-', players[i]].join('');
-            var item = document.querySelector(selector);
+            var item     = document.querySelector(selector);
             // Add current item to the predefined array.
             containers[i] = item;
         }

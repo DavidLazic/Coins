@@ -21,7 +21,7 @@ RESOLVER.CONVERTER_MODULE = (function(){
                 // If taken coins value is greater than total amount, calculate the total that can be taken.
                 if(value > total) value = value - total;
                 // Replace DOM string with new value.
-                var newStr    = str.replace(regex, value);
+                var newStr = str.replace(regex, value);
                 // Semantics.
                 var coinValue = (value !== 1) ? ' coins.' : ' coin.';
                 // Set newly created object's inner HTML.

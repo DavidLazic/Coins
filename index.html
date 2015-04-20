@@ -71,6 +71,65 @@
         text-align: center;
     }
 
+    .js-log div{
+        position: relative;
+    }
+
+    .js-log div.active::before{
+        position: absolute;
+        left: -10px;
+        top: 5px;
+        width: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 5px solid #f0ad4e;
+        content: "";
+        -webkit-animation: float 1.5s ease infinite;
+        animation: float 1.5s ease infinite;
+    }
+
+    @-webkit-keyframes float{
+
+        0%{
+            -webkit-transform: translateX(-5px);
+            -ms-transform: translateX(-5px);
+            transform: translateX(-5px);
+        }
+
+        50%{
+            -webkit-transform: translateX(-15px);
+            -ms-transform: translateX(-15px);
+            transform: translateX(-15px);
+        }
+
+        100%{
+            -webkit-transform: translateX(-5px);
+            -ms-transform: translateX(-5px);
+            transform: translateX(-5px);
+        }
+    }
+
+    @keyframes float{
+
+        0%{
+            -webkit-transform: translateX(-5px);
+            -ms-transform: translateX(-5px);
+            transform: translateX(-5px);
+        }
+
+        50%{
+            -webkit-transform: translateX(-15px);
+            -ms-transform: translateX(-15px);
+            transform: translateX(-15px);
+        }
+
+        100%{
+            -webkit-transform: translateX(-5px);
+            -ms-transform: translateX(-5px);
+            transform: translateX(-5px);
+        }
+    }
+
     .coin{
         position: relative;
         display: inline-block;
@@ -89,7 +148,7 @@
             -webkit-transform: translateY(0) rotate(0);
             -ms-transform: translateY(0) rotate(0);
             transform: translateY(0) rotate(0);
-            /*opacity: 1;*/
+            opacity: 1;
         }
 
         50%{
@@ -102,7 +161,7 @@
             -webkit-transform: translateY(-120px) rotateX(1800deg);
             -ms-transform: translateY(-120px) rotateX(1800deg);
             transform: translateY(-120px) rotateX(1800deg);
-            /*opacity: 0;*/
+            opacity: 0;
         }
     }
 
@@ -112,7 +171,7 @@
             -webkit-transform: translateY(0) rotateX(0);
             -ms-transform: translateY(0) rotateX(0);
             transform: translateY(0) rotateX(0);
-            /*opacity: 1;*/
+            opacity: 1;
         }
 
         50%{
@@ -125,7 +184,7 @@
             -webkit-transform: translateY(-120px) rotateX(1800deg);
             -ms-transform: translateY(-120px) rotateX(1800deg);
             transform: translateY(-120px) rotateX(1800deg);
-            /*opacity: 0;*/
+            opacity: 0;
         }
     }
 
@@ -175,7 +234,7 @@
             <div class="col-md-12">
                 <button class="btn btn-warning btn-restart js-restart">Restart</button>
             </div>
-            <div class="col-sm-6 col-md-4 content-wrapper">
+            <div class="col-sm-4 col-md-3 content-wrapper">
 
                 <div class="col-md-12 turn js-turn-user">
                     <div class="coin">
@@ -198,7 +257,7 @@
 
             </div>
 
-            <div class="col-sm-4 col-sm-offset-2 col-md-offset-4 log js-log"></div>
+            <div class="col-sm-4 col-sm-offset-4 col-md-offset-5 log js-log"></div>
         </div>
     </div>
 

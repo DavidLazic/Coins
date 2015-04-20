@@ -57,6 +57,27 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
         },
 
         /**
+         * Active class resolver method for log messages.
+         */
+        resolveActiveLog: function(){
+            var elems   = document.querySelectorAll('.js-log div');
+            var length  = elems.length;
+            var arr     = new Array(elems.length);
+
+            for(var i = 0; i < length; i++){
+
+                elems[i].classList.remove('active');
+
+                arr[i] = elems[i];
+
+                if(arr.indexOf(arr[i]) === (length - 1)){
+
+                    arr[i].classList.add('active');
+                }
+            }
+        },
+
+        /**
          * Resolver method for restart button text in case of when PC's turn is still ongoing.
          *
          * @param {Object} | pc - current player object. | {Integer}
@@ -82,6 +103,10 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
             var child       = converter.getLogElement(selector)(player, total, value);
 
             parent.appendChild(child);
+
+            setTimeout(function(){
+                RESOLVER.DISPLAY_MODULE.resolveActiveLog();
+            }, 1);
         },
 
         /**
