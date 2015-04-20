@@ -63,6 +63,80 @@
         padding-left: 20px;
     }
 
+    .coin{
+        position: relative;
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+    }
+
+    .coin.active{
+        -webkit-animation: flip 1.5s ease;
+        animation: flip 1.5s ease;
+    }
+
+    @-webkit-keyframes flip{
+
+        0%{
+            -webkit-transform: translateY(0) rotate(0);
+            -ms-transform: translateY(0) rotate(0);
+            transform: translateY(0) rotate(0);
+            opacity: 1;
+        }
+
+        50%{
+            -webkit-transform: translateY(-200px) rotateX(1200deg);
+            -ms-transform: translateY(-200px) rotateX(1200deg);
+            transform: translateY(-200px) rotateX(1200deg);
+        }
+
+        100%{
+            -webkit-transform: translateY(-120px) rotateX(1800deg);
+            -ms-transform: translateY(-120px) rotateX(1800deg);
+            transform: translateY(-120px) rotateX(1800deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes flip{
+
+        0%{
+            -webkit-transform: translateY(0) rotateX(0);
+            -ms-transform: translateY(0) rotateX(0);
+            transform: translateY(0) rotateX(0);
+            opacity: 1;
+        }
+
+        50%{
+            -webkit-transform: translateY(-200px) rotateX(1200deg);
+            -ms-transform: translateY(-200px) rotateX(1200deg);
+            transform: translateY(-200px) rotateX(1200deg);
+        }
+
+        100%{
+            -webkit-transform: translateY(-120px) rotateX(1800deg);
+            -ms-transform: translateY(-120px) rotateX(1800deg);
+            transform: translateY(-120px) rotateX(1800deg);
+            opacity: 0;
+        }
+    }
+
+    .coin-front,
+    .coin-back{
+        position: absolute;
+        max-width: 100%;
+        left: 0;
+        top: 0;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .coin-back{
+        -webkit-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+
     </style>
 
     <h4 class="no-margin description">Game of coins.</h4>
@@ -86,9 +160,21 @@
             <div class="col-md-6 content-wrapper">
 
                 <div class="col-md-12 turn js-turn-user">
-                    <button class="btn btn-primary js-pick" data-value="1">1</button>
-                    <button class="btn btn-primary js-pick" data-value="2">2</button>
-                    <button class="btn btn-primary js-pick" data-value="3">3</button>
+                    <div class="coin">
+                        <img class="coin-front js-pick" data-value="1" src="img/coin.png">
+                        <img class="coin-back js-pick" data-value="1" src="img/coin.png">
+                    </div>
+                    <div class="coin">
+                        <img class="coin-front js-pick" data-value="2" src="img/coin.png">
+                        <img class="coin-back js-pick" data-value="2" src="img/coin.png">
+                    </div>
+                    <div class="coin">
+                        <img class="coin-front js-pick" data-value="3" src="img/coin.png">
+                        <img class="coin-back js-pick" data-value="3" src="img/coin.png">
+                    </div>
+                    <!-- <button class="btn btn-primary js-pick" data-value="1">1</button> -->
+                    <!-- <button class="btn btn-primary js-pick" data-value="2">2</button> -->
+                    <!-- <button class="btn btn-primary js-pick" data-value="3">3</button> -->
                 </div>
 
                 <div class="col-md-12 turn js-turn-pc">
@@ -101,11 +187,11 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="ai.js"></script>
-    <script type="text/javascript" src="converter.js"></script>
-    <script type="text/javascript" src="display.js"></script>
-    <script type="text/javascript" src="init.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/ai.js"></script>
+    <script type="text/javascript" src="js/converter.js"></script>
+    <script type="text/javascript" src="js/display.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
 
     <script id="js-player-pick" type="text/template">
         <span class="js-player-pick">::value::</span>
