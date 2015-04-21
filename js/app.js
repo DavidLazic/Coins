@@ -9,6 +9,7 @@ var Game = function(cfg){
     this.currentPlayer  = cfg.currentPlayer;
     this.isThinking     = false;
     this.newGame        = true;
+    this.turnActive     = false;
     this.display        = RESOLVER.DISPLAY_MODULE;
     this.AI             = RESOLVER.AI_MODULE;
 
@@ -29,7 +30,7 @@ var Game = function(cfg){
         var resolveActiveClass = this.display.resolvePlayerActiveClass(this.currentPlayer);
         resolveActiveClass(playerContainers);
 
-        if(gameOver) return false;
+        if(gameOver || this.turnActive) return false;
         // If click event is present continue.
         if(e){
 
@@ -41,6 +42,7 @@ var Game = function(cfg){
                     var total       = me.getTotal();
                     var newValue    = total - value;
 
+                    me.turnActive = true;
                     me.display.resolveSingleClass(e.target.parentNode);
 
                     setTimeout(function(){
@@ -50,6 +52,7 @@ var Game = function(cfg){
                         me.setTotal(newValue);
                         me.setCurrentPlayer('pc');
                         me.pcTurn();
+                        me.turnActive = false;
 
                     }, 800);
                 }
@@ -86,7 +89,7 @@ var Game = function(cfg){
             me.setCurrentPlayer('user');
             me.userTurn();
             me.isThinking = false;
-            me.display.isThinking({isThinking: false});
+            me.display.turnActive({isActive: false});
 
         }, 1500);
     };

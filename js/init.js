@@ -30,9 +30,9 @@ var restartGame = function(arr){
     var log         = document.querySelector('.js-log');
     var question    = document.querySelector('.js-question');
 
-    if(gGame.isThinking){
+    if(gGame.isThinking || gGame.turnActive){
 
-        RESOLVER.DISPLAY_MODULE.isThinking({isThinking: true});
+        RESOLVER.DISPLAY_MODULE.turnActive({isActive: true});
 
         return false;
     }

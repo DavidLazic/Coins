@@ -78,14 +78,14 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
         },
 
         /**
-         * Resolver method for restart button text in case of when PC's turn is still ongoing.
+         * Resolver method for restart button text in case of turn still being active.
          *
-         * @param {Object} | pc - current player object. | {Integer}
+         * @param {Object} | turn - game turn object. | {Integer}
          */
-        isThinking: function(pc){
+        turnActive: function(turn){
             var item = document.querySelector('.js-restart');
 
-            (pc.isThinking) ? item.innerHTML = 'Wait' : item.innerHTML = 'Restart';
+            (turn.isActive) ? item.innerHTML = 'Wait' : item.innerHTML = 'Restart';
         },
 
         /**
@@ -134,10 +134,10 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
         getTotalMessage: function(total){
 
             var message = {
-                '1': ['There is ', total, ' coin left.'].join('')
+                '1': [total, ' coin left.'].join('')
             };
 
-            return (message[total]) ? message[total] : ['There are ', total, ' coins left.'].join('');
+            return (message[total]) ? message[total] : [total, ' coins left.'].join('');
         },
 
         /**
