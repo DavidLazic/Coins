@@ -75,6 +75,7 @@ var Game = function(cfg){
         // Resolve players' DOM containers' active classes.
         var resolveActiveClass = this.display.resolvePlayerActiveClass(this.currentPlayer);
         resolveActiveClass(playerContainers);
+        var thinkAnimation = this.display.resolveThinkAnimation();
 
         if(gameOver) return false;
         // Set property to true if it's PC's turn.

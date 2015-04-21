@@ -78,6 +78,36 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
         },
 
         /**
+         * Active class resolver method for animating thinking dots.
+         */
+        resolveThinkAnimation: function(){
+            var elems   = document.querySelectorAll('.js-dot');
+            var length  = elems.length;
+
+            for(var i = 0; i < length; i++){
+                // Remove active class from each element.
+                if(elems[i].classList.contains('active')) elems[i].classList.remove('active');
+                // Increase timeout for each element respectively.
+                this.animTimeout(elems[i], i*400);
+            }
+        },
+
+        /**
+         * Timeout helper method.
+         *
+         * @param {Object}  | item  - current DOM element.
+         * @param {Integer} | delay - timeout delay.
+         */
+        animTimeout: function(item, delay){
+
+            setTimeout(function(){
+
+                item.classList.add('active');
+
+            }, delay);
+        },
+
+        /**
          * Resolver method for restart button text in case of turn still being active.
          *
          * @param {Object} | turn - game turn object. | {Integer}
