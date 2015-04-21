@@ -12,13 +12,25 @@ RESOLVER.AI_MODULE = (function(){
          * @return {Integer}
          */
         playSmart: function(total){
-            var ai = null;
 
-            if(total = 10) ai = total - 9;
-            if(total <= 8 && total >= 6) ai = total - 5;
-            if(total <= 4 && total >= 2) ai = total - 1;
+            var o = {
+                '10': 1,
+                '8' : 3,
+                '7' : 2,
+                '6' : 1,
+                '4' : 3,
+                '3' : 2,
+                '2' : 1,
+            };
 
-            return (ai) ? ai : (Math.floor((Math.random() * 3) + 1));
+            if(o[total]){
+
+                return o[total];
+
+            } else{
+
+                return (Math.floor((Math.random() * 3) + 1));
+            }
         }
     };
 
