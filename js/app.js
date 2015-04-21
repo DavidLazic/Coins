@@ -70,12 +70,14 @@ var Game = function(cfg){
         var value               = this.AI.playSmart(total);
         var newValue            = total - value;
         var playerContainers    = this.getPlayerContainers();
+        var animationDelay      = this.getAnimationDelay(2500, 500);
         // Update total amount of coins DOM message.
         this.display.updateTotalMessage(this.total);
         // Resolve players' DOM containers' active classes.
         var resolveActiveClass = this.display.resolvePlayerActiveClass(this.currentPlayer);
         resolveActiveClass(playerContainers);
-        var thinkAnimation = this.display.resolveThinkAnimation();
+        // Add thinking animation.
+        var thinkAnimation = this.display.resolveThinkAnimation(animationDelay);
 
         if(gameOver) return false;
         // Set property to true if it's PC's turn.
@@ -92,7 +94,7 @@ var Game = function(cfg){
             me.isThinking = false;
             me.display.turnActive({isActive: false});
 
-        }, 1500);
+        }, animationDelay);
     };
 
     /**
@@ -134,6 +136,17 @@ var Game = function(cfg){
         }
 
         return containers;
+    };
+
+    /**
+     * Getter for think animation delay.
+     *
+     * @param {Integer} | max - delay maximum in ms.
+     * @param {Integer} | min - delay minimum in ms.
+     * @return {Integer}
+     */
+    this.getAnimationDelay = function(max, min){
+        return (Math.floor((Math.random() * max) + min));
     };
 
     /**

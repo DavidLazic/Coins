@@ -79,8 +79,10 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
 
         /**
          * Active class resolver method for animating thinking dots.
+         *
+         * @param {Integer} | delay - current animation delay.
          */
-        resolveThinkAnimation: function(){
+        resolveThinkAnimation: function(delay){
             var elems   = document.querySelectorAll('.js-dot');
             var length  = elems.length;
 
@@ -88,7 +90,7 @@ RESOLVER.DISPLAY_MODULE = (function(converter){
                 // Remove active class from each element.
                 if(elems[i].classList.contains('active')) elems[i].classList.remove('active');
                 // Increase timeout for each element respectively.
-                this.animTimeout(elems[i], i*400);
+                this.animTimeout(elems[i], ((delay/length) * i) - 100);
             }
         },
 
