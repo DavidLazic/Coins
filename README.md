@@ -1,8 +1,10 @@
 # Game of coins
-> written in "vanilla" JS
+> vanilla JS
 
-Goal is simple:
+![coins](/screenshots/coins.png "coins")
 
-- make your opponent pick the last coin.
+I'm a big fan of Baldur's Gate 2, and this one's found in the "Shadows of Amn"
+
+Goal is simple --> *make your opponent pick the last coin*.
 
 [Live preview](http://davidlazic.github.io/Coins/)
